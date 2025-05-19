@@ -1,0 +1,11 @@
+.main-content {
+  transition: margin 0.3s ease;
+  overflow-x: hidden; // Evita desbordamiento horizontal
+  
+  @media (max-width: 768px) {
+    margin-left: 70px !important;
+    .max-w-7xl {
+      max-width: 95% !important;
+    }
+  }
+}

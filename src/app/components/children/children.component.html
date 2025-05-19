@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Gestión de Niños</h2>
+  
+  <!-- Barra de herramientas -->
+  <div class="toolbar">
+    <button routerLink="/dashboard/users/new" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Agregar Niño
+    </button>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar niños...">
+    </div>
+  </div>
+
+  <!-- Tabla de niños -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Terapeuta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (child of children; track child.id) {
+      <tr>
+        <td>{{ child.name }}</td>
+        <td>{{ child.age }} años</td>
+        <td>{{ child.therapist }}</td>
+        <td class="actions">
+          <button class="btn btn-sm btn-info">Ver</button>
+          <button class="btn btn-sm btn-warning">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteChild(child.id)">Eliminar</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  transition: width 0.3s ease;
+}
+
+.gradient-bg {
+  background: #00B4DB;
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+  background: linear-gradient(to right, #0083B0, #00B4DB);
+  border-radius: 0 16px 16px 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-layer {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 16px 16px 0;
+}
+
+/* Estilos para estado colapsado */
+:host([collapsed]) {
+  .gradient-bg, .glass-layer {
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  :host {
+    width: 70px !important;
+    
+    .gradient-bg, .glass-layer {
+      border-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Gestión de Padres/Tutores</h2>
+  
+  <div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> Aquí puedes administrar toda la información de los padres y tutores.
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Niños a Cargo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (parent of parents; track parent.id) {
+      <tr>
+        <td>{{ parent.name }}</td>
+        <td>{{ parent.email }}</td>
+        <td>{{ parent.children.join(', ') }}</td>
+        <td class="actions">
+          <button class="btn btn-sm btn-primary" (click)="sendNotification(parent.id)">
+            <i class="fas fa-envelope"></i> Contactar
+          </button>
+          <button class="btn btn-sm btn-secondary">Detalles</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

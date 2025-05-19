@@ -1,0 +1,27 @@
+<div class="glass-card p-6">
+  <div class="header flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-[var(--text-light)]">Terapeutas</h2>
+    <button 
+      class="bg-[var(--secondary-blue)] hover:bg-[var(--primary-blue)] text-white px-4 py-2 rounded-lg">
+      <i class="fas fa-plus mr-2"></i>Nuevo
+    </button>
+  </div>
+
+  <table class="w-full text-[var(--text-light)]">
+    <thead class="bg-[var(--secondary-blue)]/30">
+      <tr>
+        <th class="p-3 text-left">Nombre</th>
+        <th class="p-3 text-left">Email</th>
+        <!-- Más columnas -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" 
+          class="hover:bg-[var(--secondary-blue)]/10 border-b border-[var(--glass-border)]">
+        <td class="p-3">{{ user.firstName }}</td>
+        <td class="p-3">{{ user.email }}</td>
+        <!-- Más celdas -->
+      </tr>
+    </tbody>
+  </table>
+</div>

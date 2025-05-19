@@ -1,0 +1,37 @@
+<aside class="app-sidebar h-screen fixed left-0 top-0 z-40 overflow-hidden"
+  [style.width]="isCollapsed ? '70px' : '200px'">
+  
+  <!-- Fondo con degradado azul -->
+  <div class="gradient-bg absolute inset-0 z-0"></div>
+  
+  <!-- Contenido con efecto vidrio -->
+  <div class="glass-layer h-full flex flex-col relative z-10">
+    <div class="p-4 flex justify-between items-center border-b border-white/20">
+      <h3 *ngIf="!isCollapsed" class="text-xl font-semibold text-white/90">Menu</h3>
+      <button (click)="toggleSidebar()" class="text-white/80 hover:text-white">
+        <i class="fas text-lg" [class.fa-bars]="!isCollapsed" [class.fa-times]="isCollapsed"></i>
+      </button>
+    </div>
+
+    <ul class="mt-4 space-y-1 px-2">
+      <li>
+        <a routerLink="/dashboard" 
+           class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all">
+          <i class="fas fa-home text-lg mr-3"></i>
+          <span [class.hidden]="isCollapsed" class="text-sm">Inicio</span>
+        </a>
+      </li>
+      <!-- Más elementos del menú -->
+    </ul>
+
+    <li>
+        <a routerLink="/dashboard/users/configuraciones" class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all">
+          <i class="fas fa-cogs text-lg mr-3"></i>
+          <span [class.hidden]="isCollapsed" class="text-sm">Configuración</span>
+        </a>
+      </li>
+      
+
+
+  </div>
+</aside>
