@@ -1,0 +1,28 @@
+/* Estilos mínimos adicionales */
+button {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* Ajuste para iconos */
+fa-icon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsividad adicional */
+@media (max-width: 640px) {
+  .hidden-mobile {
+    display: none;
+  }
+}

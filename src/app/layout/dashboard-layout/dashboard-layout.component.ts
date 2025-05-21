@@ -1,3 +1,4 @@
+/* src\app\layout\dashboard-layout\dashboard-layout.component.ts */
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router'; // Importación clave
 import { HeaderComponent } from '../../shared/header/header.component';

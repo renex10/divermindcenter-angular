@@ -1,0 +1,70 @@
+/* Estilos para tablas */
+.table-container {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+  margin: 2rem 0;
+  
+  table {
+    @apply w-full;
+    
+    thead {
+      @apply bg-gray-50;
+      
+      th {
+        @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+      }
+    }
+    
+    tbody {
+      @apply divide-y divide-gray-200;
+      
+      tr {
+        @apply hover:bg-gray-50 transition-colors;
+        
+        td {
+          @apply px-6 py-4 whitespace-nowrap text-sm text-gray-800;
+          
+          .actions {
+            @apply flex space-x-2;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-container {
+    @apply shadow-none border border-gray-200;
+    
+    table {
+      @apply block;
+      
+      thead {
+        @apply hidden;
+      }
+      
+      tbody {
+        @apply block;
+        
+        tr {
+          @apply block mb-4 border-b border-gray-200 last:border-b-0;
+          
+          td {
+            @apply block px-4 py-2;
+            
+            &:before {
+              @apply content-[attr(data-label)] font-medium text-gray-700;
+              display: inline-block;
+              width: 120px;
+            }
+            
+            .actions {
+              @apply justify-end;
+            }
+          }
+        }
+      }
+    }
+  }
+}

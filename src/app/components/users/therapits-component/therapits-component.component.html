@@ -1,0 +1,84 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <!-- Botón de agregar nuevo -->
+  <div class="flex justify-between items-center p-4 bg-white dark:bg-gray-800">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Listado de Terapeutas</h2>
+    <button class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      <span>Nuevo Terapeuta</span>
+    </button>
+  </div>
+
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Nombre</th>
+        <th scope="col" class="px-6 py-3 hidden md:table-cell">Email</th>
+        <th scope="col" class="px-6 py-3 hidden sm:table-cell">RUT</th>
+        <th scope="col" class="px-6 py-3">Tipo</th>
+        <th scope="col" class="px-6 py-3 hidden lg:table-cell">Registro</th>
+        <th scope="col" class="px-6 py-3">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let therapist of therapists" 
+          class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          {{ therapist.firstName }}
+        </td>
+        <td class="px-6 py-4 hidden md:table-cell">
+          {{ therapist.email }}
+        </td>
+        <td class="px-6 py-4 hidden sm:table-cell">
+          {{ therapist.rut }}
+        </td>
+        <td class="px-6 py-4">
+          <span [ngClass]="{
+            'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300': therapist.practiceType === 'CENTRO_AFILIADO',
+            'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300': therapist.practiceType === 'INDEPENDIENTE'
+          }" class="px-2 py-1 text-xs font-medium rounded-full">
+            {{ therapist.practiceType | titlecase }}
+          </span>
+        </td>
+        <td class="px-6 py-4 hidden lg:table-cell">
+          {{ therapist.creationDate }}
+          <span class="text-gray-500 dark:text-gray-400 text-xs">{{ therapist.creationTime }}</span>
+        </td>
+        <td class="px-6 py-4">
+          <div class="flex space-x-2">
+            <button (click)="viewTherapist(therapist.id)" 
+                    class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300">
+              <fa-icon [icon]="faEye"></fa-icon>
+            </button>
+            <button (click)="editTherapist(therapist.id)" 
+                    class="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300">
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </button>
+            <button (click)="deleteTherapist(therapist.id)" 
+                    class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+              <fa-icon [icon]="faTrashAlt"></fa-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div *ngIf="totalPages > 1" class="p-4 bg-white dark:bg-gray-800 flex items-center justify-between">
+    <div class="text-sm text-gray-700 dark:text-gray-400">
+      Página {{ currentPage + 1 }} de {{ totalPages }}
+    </div>
+    <div class="flex space-x-2">
+      <button (click)="onPageChange(currentPage - 1)" 
+              [disabled]="currentPage === 0"
+              class="px-3 py-1 border rounded-md text-gray-700 dark:text-gray-300 disabled:opacity-50">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+      </button>
+      <button (click)="onPageChange(currentPage + 1)" 
+              [disabled]="currentPage >= totalPages - 1"
+              class="px-3 py-1 border rounded-md text-gray-700 dark:text-gray-300 disabled:opacity-50">
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>

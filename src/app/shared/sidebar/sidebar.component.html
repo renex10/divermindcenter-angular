@@ -14,24 +14,56 @@
     </div>
 
     <ul class="mt-4 space-y-1 px-2">
+      <!-- Menú Dashboard -->
       <li>
         <a routerLink="/dashboard" 
            class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all">
           <i class="fas fa-home text-lg mr-3"></i>
-          <span [class.hidden]="isCollapsed" class="text-sm">Inicio</span>
+          <span [class.hidden]="isCollapsed" class="text-sm">Dashboard</span>
         </a>
       </li>
-      <!-- Más elementos del menú -->
-    </ul>
 
-    <li>
-        <a routerLink="/dashboard/users/configuraciones" class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all">
+      <!-- Menú Usuarios (con dropdown) -->
+      <li>
+        <details>
+          <summary class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all cursor-pointer">
+            <i class="fa-solid fa-users text-lg mr-3"></i>
+            <span [class.hidden]="isCollapsed" class="text-sm">Usuarios</span>
+          </summary>
+          <ul class="ml-6 mt-1 space-y-1">
+            <!-- Submenú Terapeutas -->
+            <li>
+              <a routerLink="/dashboard/users" 
+                 class="flex items-center p-2 rounded-lg hover:bg-white/5 text-white/80 transition-all">
+                <span [class.hidden]="isCollapsed" class="text-xs">Terapeutas</span>
+              </a>
+            </li>
+            <!-- Submenú Padres -->
+            <li>
+              <a routerLink="/dashboard/users/padres" 
+                 class="flex items-center p-2 rounded-lg hover:bg-white/5 text-white/80 transition-all">
+                <span [class.hidden]="isCollapsed" class="text-xs">Padres</span>
+              </a>
+            </li>
+            <!-- Submenú Niños -->
+            <li>
+              <a routerLink="/dashboard/users/children" 
+                 class="flex items-center p-2 rounded-lg hover:bg-white/5 text-white/80 transition-all">
+                <span [class.hidden]="isCollapsed" class="text-xs">Niños</span>
+              </a>
+            </li>
+          </ul>
+        </details>
+      </li>
+
+      <!-- Menú Configuración -->
+      <li>
+        <a routerLink="/dashboard/users/configuraciones" 
+           class="flex items-center p-3 rounded-lg hover:bg-white/10 text-white/90 transition-all">
           <i class="fas fa-cogs text-lg mr-3"></i>
           <span [class.hidden]="isCollapsed" class="text-sm">Configuración</span>
         </a>
       </li>
-      
-
-
+    </ul>
   </div>
 </aside>

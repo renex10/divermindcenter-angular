@@ -10,10 +10,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NoPagesFoundComponent } from './pages/no-pages-found/no-pages-found.component';
 
 // Importación de componentes de usuarios
-import { UsersComponent } from './components/users/users.component';
-import { ChildrenComponent } from './components/children/children.component';
-import { ParentsComponent } from './components/parents/parents.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { TherapitsComponentComponent } from './components/users/therapits-component/therapits-component.component';
+import { ChildrenComponent } from './components/users/children/children.component';
+import { ParentsComponent } from './components/users/parents/parents.component';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { Component } from '@angular/core';
 
@@ -52,7 +51,7 @@ export const routes: Routes = [
         children: [
           { 
             path: '', 
-            component: UsersComponent, // Listado de terapeutas
+            component: TherapitsComponentComponent, // Listado de terapeutas
             data: { breadcrumb: 'Terapeutas' } 
           },
           { 
@@ -65,31 +64,14 @@ export const routes: Routes = [
             } 
           },
           { 
-            path: 'parents', 
+            path: 'padres', 
             component: ParentsComponent, // Listado de padres
             data: { 
               breadcrumb: 'Padres',
               requiredRole: 'admin'
             } 
           },
-          { 
-            path: 'new', 
-            component: UserFormComponent, // Formulario para nuevo usuario
-            data: { 
-              breadcrumb: 'Nuevo Usuario',
-              // Metadata para formulario
-              formType: 'create'
-            } 
-          },
-          { 
-            path: 'edit/:id', 
-            component: UserFormComponent, // Mismo componente para edición
-            data: { 
-              breadcrumb: 'Editar Usuario',
-              formType: 'edit'
-            } 
-          },
-
+          
           //componente de configuraciones
           {
             path:'configuraciones',
